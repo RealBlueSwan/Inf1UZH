@@ -1,0 +1,165 @@
+
+Question 7Using APIs
+Implement a function weekday_of which takes a string as a parameter date_string. The given string will be in ISO 8601 format like "YYYY-MM-DD", e.g., "2001-12-24" or "1997-01-01". The function should return the day of the week of the given date as an integer number between 1 (Monday) and 7 (Sunday).
+
+You may assume that your function will only be called with parameters that match the given description.
+
+To solve this task, you will need to search the datetime.date documentation for the necessary functions.
+
+There is no penalty if you manage to solve the task some other way, but using the datetime.date API makes it very straight-forward. The function will need to first convert the string to a datetime.date object and then return the weekday of the resulting datetime.date.
+
+Use the following template:
+
+def weekday_of(date_string):
+    pass # implement here
+The following example illustrates how the solution may be used:
+
+print( weekday_of("1998-10-25") )
+print( weekday_of("2001-01-01") )
+print( weekday_of("1995-12-12") )
+The code above should produce the following output:
+
+7
+1
+2
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import your solution - not more, not less!
+
+
+
+
+Question 6Venn
+Implement a function named venn that takes three lists l1, l2, and l3, each of which contains zero or more values of arbitrary type. The function should return a set containing all those unique values which appear in either l1 or l2 at least once but which do not appear in `l3 .
+
+You may assume that your function will only be called with parameters that match the given description. Note that the usual equivalence principles apply.
+
+Use the following template:
+
+def venn(one, two, three):
+    pass
+    # don't forget to return the result!
+The following example illustrates how the solution may be used:
+
+print( venn([1, 2, 2, 2, 3, 4], [2, 2, 3, 4], [3]))
+print( venn([1.0, "hi", 3], [1.0, 3, "hi"], [3, 1]))
+print( venn([1, 2, 3], [4, 5, 6], []))
+print( venn([1, 2, 3], [1, 2, 3], [1, 2, 3]))
+The code above should produce the following output:
+
+{1, 2, 4}
+{'hi'}
+{1, 2, 3, 4, 5, 6}
+set()
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import your solution - not more, not less!
+
+
+8
+Question 8Data structures
+As part of a university management system, you need to implement a component that keeps track of the grades students receive in their courses. Students are identified by their matriculation number (an integer, e.g.: 123), and courses are identified by a short name (a string, e.g.: "INF-1"). Grades are given as floating-point numbers ranging from 1.00 to 6.00 in steps of 0.25. You will use nested dictionaries to maintain the information.
+
+The outer dictionary should use student matriculation numbers as keys, and the inner dictionary should map course names to grades. Below is an example of such a nested dictionary, where, for instance, the student with matriculation number 321 has received a grade of 4.00 in "MAT-3" and 5.25 in "INF-1":
+
+{123: {"INF-1": 3.75, "BIO-2": 4.00}, 999: {"BIO-2": 4.25}, 321: {"MAT-3": 4.00, "INF-1": 5.25} }
+
+You need to implement two functions, add_grade and remove_grade:
+
+add_grade should take four parameters: a dictionary grades, a matriculation number student, a course name course, and a grade grade. The function should update the grade for the given course of the specified student. If the student is not yet represented in grades, the function will need to create a new key/value pair in grades for that student. Finally, the grades dictionary should be returned.
+
+remove_grade should take three parameters: a dictionary grades, a matriculation number student, and a course name course. If the student has a grade for the specified course, that grade should be removed. If no grades remain for that student, the student should be removed from grades entirely. If the student is unknown or if the student hasn't received a grade for the given course, grades should be returned as-is (meaning, no actions should be taken and no errors should arise). In any case, grades should finally be returned.
+
+You may assume that your functions will only be called with parameters that fit the provided description.
+
+Important: Both functions must return grades at the end!
+
+Use the following template:
+
+# Implement both functions. Change the method signatures to add parameters as specified!
+# Remember to return grades at the end of each function!
+def add_grade():
+    pass
+def remove_grade():
+    pass
+The following example illustrates how the solution may be used:
+
+print( add_grade(   {},                                    111, "INF-1", 4.00) )
+print( add_grade(   {222: {"INF-1": 3.50}},                222, "PHY-2", 5.50) )
+print( add_grade(   {222: {"INF-1": 3.50}},                333, "PHY-2", 1.75) )
+print( remove_grade({222: {"INF-1": 3.50, "PHY-2": 5.50}}, 222, "INF-1") )
+print( remove_grade({222: {"INF-1": 3.50}},                222, "INF-1") )
+print( remove_grade({222: {"INF-1": 3.50, "PHY-2": 5.50}}, 111, "INF-1") )
+print( remove_grade({},                                    111, "INF-1") )
+The code above should produce the following output:
+
+{111: {'INF-1': 4.0}}
+{222: {'INF-1': 3.5, 'PHY-2': 5.5}}
+{222: {'INF-1': 3.5}, 333: {'PHY-2': 1.75}}
+{222: {'PHY-2': 5.5}}
+{}
+{222: {'INF-1': 3.5, 'PHY-2': 5.5}}
+{}
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import your solution - not more, not less!
+
+
+
+
+
+Classes
+Implement a class Product which represents a product sold by a discount store. Please read the following description, including the example, carefully, as all parts are necessary to fully specify the required implementation.
+
+A Product has the following attributes, which should be set when creating a Product and which should be obtainable from an existing Product using the dot-notation.
+
+name, the product name as a string
+price, the regular sales price of the product in the store
+discount, the discount (as a fraction of the price) subtracted by the store when selling the product.
+Once a Product has been created, it should exhibit the following behavior:
+
+A sales_price method (taking no arguments) should return the price of the product when sold by the store (the original price minus the necessary discount derived from the price via discount).
+When printing the Product, the template "PRODUCT sells for SALES_PRICE" should be followed.
+When printing multiple Products in a collection, a string like "Product(name, price, discount)" should be used to represent each Product.
+Example:
+
+The store may obtain a "Smartphone" for 1000 currency from the supplier and will offer a discount of 0.1 when selling the item. This Product could be instantiated like this: sp = Product("Smartphone", 1000, 0.1). sp should then have name, price and discount attributes, such that, for example, sp.discount would be 0.1. When printed, sp would show as "Smartphone sells for 900.00"and if printed as part of a collection, it would show as "Product(Smartphone, 1000.00, 0.1)".
+
+Hint: Remember that to format a floating point number up to two decimal points, you can use the :.2f syntax. For example, f"value: {1234.56789:.2f}" will show as "value: 1234.57".
+
+You may assume that your implementation will only be used in a way that matches the given description.
+
+Use the following template:
+
+# Implement the four necessary methods!
+class Product:
+    pass
+The following example illustrates how the solution may be used:
+
+p = Product("Smartphone", 1000, 0.1)
+print( p.sales_price() )
+print( p )
+print( [p, Product("Dumbphone", 100, 0.2)])
+The code above should produce the following output:
+
+900.0
+Smartphone sells for 900.00
+[Product(Smartphone, 1000.00, 0.10), Product(Dumbphone, 100.00, 0.20)]
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import your solution - not more, not less!
+
+
+
+Question 5Comprehensions
+Implement a function strings_containing which takes two parameters: a list of strings strings and a string word. The function should return a list of strings from strings containing only those strings that contain word (in the original order), ignoring character casing.
+
+You may assume that your function will only be called with parameters that match the given description.
+
+Important: The function must start with return and it must return a comprehension outright. You are not allowed to build data structures using for loops or declare temporary variables.
+
+Use the following template:
+
+def strings_containing(strings, word):
+    pass # you MUST return a comprehension outright
+The following example illustrates how the solution may be used:
+
+print( strings_containing(["Hello", "there", "friend"], "he" ) )
+print( strings_containing(["abc", "cde", "DEF"], "de" ) )
+The code above should produce the following output:
+
+['Hello', 'there']
+['cde', 'DEF']
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import your solution - not more, not less!
