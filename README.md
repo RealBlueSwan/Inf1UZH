@@ -1,4 +1,4 @@
-# UZH Informatics 1 Fall Semester
+# UZH Informatics 1
 
 Collection of the Access exercises provided by UZH in Fall Semester, Mock exam and some of the Final exam questions.
 
