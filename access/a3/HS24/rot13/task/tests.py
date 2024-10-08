@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from unittest import TestCase
 
-from task import script
+from task.script import rot_n
 
 # This test suite only tests whether the value returned by
 # the solution function has the correct type. If this test
@@ -11,12 +11,11 @@ from task import script
 # Feel free to extend the class with your own test cases,
 # which will then also be executed in every "Test & Run".
 
+
 class PublicTestSuite(TestCase):
 
-    def test_return_type(self):
-        actual = script.get_size(111)
-        self.assertEqual(actual, "L")
+    def test_shift_by_1(self):
+        actual = rot_n("abc!", 1)
+        self.assertEqual(actual, "bcd!")
 
-# You can copy paste the test above and change the values to different
-# inputs and expected outputs! This will make your life much easier!
-# note that each test function must have a different name starting with "test".
+
