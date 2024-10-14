@@ -3,8 +3,21 @@
 # This signature is required for the automated grading to work. 
 # Do not rename the function or change its list of parameters.
 def compress(data):
-    pass
+    if len(data) == 0:
+        return((), [])
 
+    # keys in tuple
+    keys = tuple(sorted(data[0].keys()))
+    
+    values = []
+    for e in data:
+        # a list of tuples
+        v = []
+        for k in keys:
+            v.append(e[k])
+        values.append(tuple(v))
+
+    return (keys, values)
 
 # The following line calls the function and prints the return
 # value to the Console. This way you can check what it does.
