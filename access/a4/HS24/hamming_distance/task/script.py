@@ -3,6 +3,10 @@
 def hamming_dist(signal_1, signal_2):
     result = []
 
+    # Check if either signal is empty
+    if not signal_1["times"] or not signal_1["data"] or not signal_2:
+        return "Empty signal on at least one of the sensors"
+
     # Check if the lengths of times, data, and signal_2 are equal
     if len(signal_1["times"]) != len(signal_1["data"]) or len(signal_1["data"]) != len(signal_2):
         return "Empty signal on at least one of the sensors"
@@ -25,6 +29,3 @@ def hamming_dist(signal_1, signal_2):
 signal_sensor_1 = {"times": [0, 1, 2], "data": ["00110101", "01010101", "10001110"]}
 signal_sensor_2 = ("00110101", "01010101", "10001110")
 print(hamming_dist(signal_sensor_1, signal_sensor_2))
-
-# BUGReport 
-# !!!Return value was not a string for inputs where an empty-signal warning was expected!!!
