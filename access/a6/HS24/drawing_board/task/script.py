@@ -54,7 +54,6 @@ class MagicDrawingBoard:
             if idx % self.x == 0 and idx > 0: 
                 bord += '\n'
             bord += '1' if v else '0'
-        print(bord)
         return bord
 
         
