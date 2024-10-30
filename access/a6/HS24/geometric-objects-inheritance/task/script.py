@@ -3,21 +3,23 @@
 # The purpose of this file is illustrating the class usages. This script
 # is irrelevant for the grading and you can freely change its contents.
 
-from task.cone import Cone
-from task.cube import Cube
+from cone import Cone
+from cube import Cube
 
 # Create first cone object
-#cone_1 = Cone("red", True, 2, 4, 2)
+cone_1 = Cone("red", True, 2, 4, 2)
+#print(f"Color of the cone_1 object is: {cone_1.color}")
 
 # Create another cone object
-#cone_2 = Cone("black", False, 5.64, 4.2, 8.7)
+cone_2 = Cone("black", False, 5.64, 4.2, 8.7)
+#print(f"Color of the cone_2 object is: {cone_2.color}")
 
 # Create a cube object
-#cube = Cube("white", True, 7.2)
+cube = Cube("white", True, 7.2)
 #print(f"Color of the cube object is: {cube.color}")
 
 # Update cube color
-#cube.color = "yellow"
+cube.color = "yellow"
 
 # See if the color of cube object is changed
 #print(f"Color of the cube object is: {cube.color}")

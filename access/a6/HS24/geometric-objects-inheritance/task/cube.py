@@ -1,12 +1,13 @@
-from task.geometric_object import GeometricObject
+from geometric_object import GeometricObject
 
 
 class Cube(GeometricObject):
-    def __init__(self, color, filled, side_length):
-        pass
+    def __init__(self, color:str, filled:bool, side_length:float):
+        super().__init__(color, filled)
+        self.side_length = side_length
 
     def area(self):
-        pass
+        return round(6 * self.side_length**2, 2)
 
     def volume(self):
-        pass
+        return round(self.side_length**3, 2)
