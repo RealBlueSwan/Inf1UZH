@@ -3,10 +3,13 @@
 from abc import ABC, abstractmethod
 
 
-class Person():
+class Person(ABC):
 
     def __init__(self, name: str, email: str):
-        pass
+        self.name = name
+        self.email = email
 
+    @abstractmethod
     def get_details(self) -> str:
         pass
+
