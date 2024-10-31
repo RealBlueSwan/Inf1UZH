@@ -1,5 +1,7 @@
 
-Question 7Using APIs
+Question 7:
+
+Using APIs
 Implement a function weekday_of which takes a string as a parameter date_string. The given string will be in ISO 8601 format like "YYYY-MM-DD", e.g., "2001-12-24" or "1997-01-01". The function should return the day of the week of the given date as an integer number between 1 (Monday) and 7 (Sunday).
 
 You may assume that your function will only be called with parameters that match the given description.
@@ -27,7 +29,9 @@ Paste your solution into the following field. Utilize the template above and mak
 
 
 
-Question 6Venn
+Question 6:
+
+Venn
 Implement a function named venn that takes three lists l1, l2, and l3, each of which contains zero or more values of arbitrary type. The function should return a set containing all those unique values which appear in either l1 or l2 at least once but which do not appear in `l3 .
 
 You may assume that your function will only be called with parameters that match the given description. Note that the usual equivalence principles apply.
@@ -52,8 +56,9 @@ set()
 Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import your solution - not more, not less!
 
 
-8
-Question 8Data structures
+Question 8:
+
+Data structures
 As part of a university management system, you need to implement a component that keeps track of the grades students receive in their courses. Students are identified by their matriculation number (an integer, e.g.: 123), and courses are identified by a short name (a string, e.g.: "INF-1"). Grades are given as floating-point numbers ranging from 1.00 to 6.00 in steps of 0.25. You will use nested dictionaries to maintain the information.
 
 The outer dictionary should use student matriculation numbers as keys, and the inner dictionary should map course names to grades. Below is an example of such a nested dictionary, where, for instance, the student with matriculation number 321 has received a grade of 4.00 in "MAT-3" and 5.25 in "INF-1":
@@ -100,9 +105,10 @@ Paste your solution into the following field. Utilize the template above and mak
 
 
 
-
+Question ?
 
 Classes
+
 Implement a class Product which represents a product sold by a discount store. Please read the following description, including the example, carefully, as all parts are necessary to fully specify the required implementation.
 
 A Product has the following attributes, which should be set when creating a Product and which should be obtainable from an existing Product using the dot-notation.
@@ -143,7 +149,9 @@ Paste your solution into the following field. Utilize the template above and mak
 
 
 
-Question 5Comprehensions
+Question 5:
+
+Comprehensions
 Implement a function strings_containing which takes two parameters: a list of strings strings and a string word. The function should return a list of strings from strings containing only those strings that contain word (in the original order), ignoring character casing.
 
 You may assume that your function will only be called with parameters that match the given description.
