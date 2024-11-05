@@ -1,0 +1,168 @@
+4:
+
+Higher-order functions
+Implement a function both which takes three parameters: two functions f and g, and an input it. The function should return a tuple containing two values: the results of applying f and g to it.
+
+Use the following template:
+
+def both(f, g, it):
+    pass # Replace this with your implementation
+The following example illustrates how the solution may be used:
+
+print( both(str.lower, str.upper, "HeLlO") )
+print( both(int, float, "1") )
+The code above should produce the following output:
+
+('hello', 'HELLO')
+(1, 1.0)
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import (or run) your solution - not more, not less!
+
+
+5:
+
+Code Golf
+Implement a function caser which takes a string as parameter s. If s is longer than 5 characters, caser should turn s into upper-case and return it. If s's length is shorter or equal to 5 characters, it should turn s into lower-case and return it.
+
+Important: You must find a solution that contains at most 38 non-space characters in the function body. In other words, while the function signature is not counted, whatever you replace pass with may not contain more than 38 characters (not counting spaces).
+
+Use the following template:
+
+def caser(s):
+    pass # Replace this with your implementation
+The following example illustrates how the solution may be used:
+
+print( caser("Hello") )
+print( caser("Bananas") )
+print( caser("AbC") )
+print( caser("i don't know!") )
+The code above should produce the following output:
+
+hello
+BANANAS
+abc
+I DON'T KNOW!
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import (or run) your solution - not more, not less!
+
+
+6:
+
+Numbers
+Implement a function div_sums which takes two lists of numbers, numbers and divisors, as parameters. For each divisor in the divisors, the function should take all numbers in numbers divisible by the divisor and sum them up. The function should return the resulting sums as a list.
+
+For example, given numbers = [9, 2, 1, 4, 6, 8] and divisors = [2, 4], the numbers 2, 4 and 8 are divisible by 2, and the numbers 4 and 8 are divisible by 4, resulting in a return value of [14, 12], because 2+4+8=14, and 4+8=12.
+
+If none of the numbers are divisible by a given divisor, the corresponding list element in the return value should be 0.
+
+Use the following template:
+
+def div_sums(numbers, divisors):
+    pass # Replace this with your implementation
+The following example illustrates how the solution may be used:
+
+print(div_sums([3, 1, 2, 6, 1, 9], [3, 2])) # [3+6+9, 2+6] = [18, 8]
+print(div_sums([4, 4, 8], [2, 3]))          # [4+4+8, _] = [16, 0] (no numbers divisble by 3)
+The code above should produce the following output:
+
+[18, 8]
+[16, 0]
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import (or run) your solution - not more, not less!
+
+
+
+
+7:
+
+
+Python Standard library
+URL components may only contain a limited number of characters. Most special characters (including spaces) need to be encoded using the %xx escape. That's why, for example, the URL to the Wikipedia article on El Niño, https://en.wikipedia.org/wiki/El_Ni%C3%B1o%E2%80%93Southern_Oscillation , contains all those obscure characters.
+
+Implement a function encode which takes a string as parameter s. The function should replace special characters in s using the %xx escape and return the result. For example, given the string /El Niño/, the function should return the string /El%20Ni%C3%B1o/.
+
+Don't implement this complex functionality yourself. Find and use the existing implementation provided by the urllib.parse Module .
+
+Use the following template:
+
+def encode(s):
+    pass # Replace this with your implementation
+The following example illustrates how the solution may be used:
+
+print( encode("/El Niño/") )
+print( encode("Hello, world!") )
+The code above should produce the following output:
+
+/El%20Ni%C3%B1o/
+Hello%2C%20world%21
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import (or run) your solution - not more, not less!
+
+
+
+8:
+
+
+Comprehensions
+Implement a function divisor_finder which takes two parameters: a list of integers numbers and another list of integers potential_divisors. The function should return a dictionary where:
+
+The keys are the individual numbers from the numbers list.
+The values are lists containing all elements from potential_divisors which evenly divide the corresponding number (i.e., are divisors of that number).
+You may assume that your function will only be called with parameters that match the given description.
+
+Important: The function must start with return and it must return a dict comprehension outright. You are not allowed to build data structures using for loops or declare temporary variables.
+
+Tip: Remember that a number is evenly divisible by another if the remainder of their division is zero. You can use the modulo operator % to check this.
+
+Use the following template:
+
+def divisor_finder(numbers, potential_divisors):
+    pass # you MUST return a dict comprehension outright
+The following example illustrates how the solution may be used:
+
+print(divisor_finder([12], [2, 3, 4, 5]))
+print(divisor_finder([12, 14, 16], [2, 3, 4]))
+print(divisor_finder([30, 42, 70], [2, 3, 5, 7]))
+The code above should produce the following output:
+
+{12: [2, 3, 4]}
+{12: [2, 3, 4], 14: [2], 16: [2, 4]}
+{30: [2, 3, 5], 42: [2, 3, 7], 70: [2, 5, 7]}
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import (or run) your solution - not more, not less!
+
+
+
+9:
+
+
+Classes
+Implement a class Recipe which represents a cooking recipe. When instantiating a Recipe, it should be provided two parameters:
+
+A name
+A dictionary of ingredients
+It is assumed that the recipe serves one person. Hence, the Recipe class should provide a method ingredients_for_servings which returns the dictionary of ingredients, however with each amount multiplied by an integer provided as a parameter to ingredients_for_servings.
+
+When printing a Recipe, a string beginning with "A recipe for " and ending with the name of the recipe should be shown. When representing a Recipe, the resulting string should contain the following things in order:
+
+The name of the recipe
+An opening brace (
+The string representation of the dictionary as provided by Python
+A closing brace )
+Additionally, implement a class DietRecipe which is a more specialized form of Recipe. A DietRecipe should accept an additional initialization parameter indicating the number of calories in one serving. DietRecipe should provide a method servings_for_calories taking a number of calories permissible and returning the number of servings allowed to reach it. For example, if a recipe has 200 calories, and the method is given 300 calories as a parameter, it should return 1.5, because that's the number of servings permissible given the allowed calories.
+
+Use the following template:
+
+class Recipe():
+    pass # Replace this with your implementation
+The following example illustrates how the solution may be used:
+
+i = {"Butter (grams)": 20, "Garlic, smashed (cloves)": 1, "Salt (tsp)": .25}
+recipe = Recipe("Garlic butter", i)
+print(recipe.ingredients_for_servings(3))
+print(recipe)
+print([recipe])
+diet_recipe = DietRecipe("Garlic butter", i, 150)
+print(diet_recipe.servings_for_calories(300))
+The code above should produce the following output:
+
+{'Butter (grams)': 60, 'Garlic, smashed (cloves)': 3, 'Salt (tsp)': 0.75}
+A recipe for Garlic butter
+[Recipe({'Butter (grams)': 20, 'Garlic, smashed (cloves)': 1, 'Salt (tsp)': 0.25})]
+2.0
+Paste your solution into the following field. Utilize the template above and make absolutely sure to avoid syntax errors! Submit everything that is necessary to import (or run) your solution - not more, not less!
