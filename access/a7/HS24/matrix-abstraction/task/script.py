@@ -21,9 +21,6 @@ class Matrix:
     def __eq__(self, other):
         pass
 
-    def __hash__(self):
-        return hash(self.matrix)
-
     def __add__(self, other):
         for y in self.matrix:
             for x in y:
