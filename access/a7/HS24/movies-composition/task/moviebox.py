@@ -7,7 +7,7 @@
 from movie import Movie
 
 
-class MovieBox:
+class MovieBox(Movie):
     def __init__(self, title: str, movies: list):
         if not title:
             raise Warning("Title is empty")
@@ -16,26 +16,26 @@ class MovieBox:
         for movie in movies:
             if not isinstance(movie, Movie):
                 raise Warning("All items in the movie list must be of type Movie")
-        self.title = title
+        super().__init__(title, [], sum(movie.get_duration() for movie in movies))
         self._movies = movies
 
     def __repr__(self):
         movies_str = ', '.join(repr(movie) for movie in self._movies)
-        return f'MovieBox("{self.title}", [{movies_str}])'
+        return f'MovieBox("{self._title}", [{movies_str}])'
     
     def __str__(self):
-        return f"MovieBox = {self.title}, Movies = [{self._movies}]"
+        return f"MovieBox = {self._title}, Movies = [{self._movies}]"
 
     def __eq__(self, other):
         if not isinstance(other, MovieBox):
             return False
-        return (self.title == other.title and self._movies == other._movies)
+        return (self._title == other._title and self._movies == other._movies)
 
     def __hash__(self):
-        return hash((self.title, tuple(self._movies)))
+        return hash((self._title, tuple(self._movies)))
 
     def get_title(self):
-        return self.title
+        return self._title
 
     def get_actors(self):
         actor_list = []

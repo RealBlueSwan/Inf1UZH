@@ -8,31 +8,31 @@ class Movie:
     def __init__(self, title: str, actors: list, duration: int):
         if not title:
             raise Warning("Title is empty")
-        if not actors:
+        if not actors and self.__class__.__name__ != 'MovieBox':
             raise Warning("Actors list is empty")
         if duration < 1:
             raise Warning("Duration must be at least 1 minute")
-        self.title = title
+        self._title = title
         self._actors = actors
         self._duration = duration
 
     def __repr__(self) -> str:
         actors_str = ', '.join(f'"{actor}"' for actor in self._actors)
-        return f'Movie("{self.title}", [{actors_str}], {self._duration})'
+        return f'Movie("{self._title}", [{actors_str}], {self._duration})'
     
     def __str__(self) -> str:
-        return f"Title = {self.title}, Actors = {self._actors}, Duration = {self._duration}"
+        return f"Title = {self._title}, Actors = {self._actors}, Duration = {self._duration}"
     
     def __eq__(self, other) -> bool:
         if isinstance(other, Movie):
-            return (self.title == other.title and self._actors == other._actors and self._duration == other._duration)
+            return (self._title == other._title and self._actors == other._actors and self._duration == other._duration)
         return False
     
     def __hash__(self):
-        return hash((self.title, tuple(self._actors), self._duration))
+        return hash((self._title, tuple(self._actors), self._duration))
 
     def get_title(self) -> str:
-        return self.title
+        return self._title
 
     def get_actors(self) -> list:
         return self._actors

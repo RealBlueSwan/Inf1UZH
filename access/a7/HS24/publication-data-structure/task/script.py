@@ -6,7 +6,24 @@
 class Publication:
 
     def __init__(self, authors, title, year):
-        pass
+
+        self.authors = authors
+        self.title = title
+        self.year = year
+
+    def __eq__(self, other):
+        return (self.authors == other.authors and self.title == other.title and self.year == other.year)
+
+
+    def __str__(self):
+        authors_str = ', '.join(f'"{author}"' for author in self.authors)
+        return f'Publication([{authors_str}], "{self.title}", {self.year})'
+
+    def __repr__(self):
+        authors_str = ', '.join(f'"{author}"' for author in self.authors)
+        return f'Publication([{authors_str}], "{self.title}", {self.year})'
+    
+    
 
     # To implement the required functionality, you will also have to implement several
     # of the special functions that typically include a double underscore.
@@ -34,9 +51,11 @@ if __name__ == '__main__':
     p1 = Publication(["A"], "B", 1234)
     p2 = Publication(["A"], "B", 1234)
     p3 = Publication(["B"], "C", 2345)
+    #print(p1)
+    #print(p2)
     print(p1 == p2)  # True
     print(p2 == p3)  # False
-
+    
     sales = {
         p1: 273,
         p2: 398,

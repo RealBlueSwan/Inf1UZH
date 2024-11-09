@@ -17,6 +17,16 @@ class LibraryTest(TestCase):
         expected = 'MovieBox("T", [Movie("T2", ["A", "B"], 234)])'
         self.assertEqual(expected, actual)
 
+    def test_str_movie(self):
+        actual = str(Movie("T", ["A", "B"], 123))
+        expected = "Title = T, Actors = ['A', 'B'], Duration = 123"
+        self.assertEqual(expected, actual)
+
+    def test_str_moviebox(self):
+        actual = str(MovieBox("T", [Movie("T2", ["A", "B"], 234)]))
+        expected = 'MovieBox = T, Movies = [[Movie("T2", ["A", "B"], 234)]]'
+        self.assertEqual(expected, actual)
+
     def test_library(self):
         a = Movie("The Shawshank Redemption", ["Robbins", "Freeman"], 142)
         b = Movie("The Godfather", ["Brando", "Pacino"], 175)
