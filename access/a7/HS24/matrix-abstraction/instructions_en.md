@@ -18,7 +18,7 @@ All nested lists have the same length.
 There has to be at least one non-empty row (in other words: [[]] would be invalid).
 If the above conditions are not satisfied, an AssertionError should be thrown (you may use the assert x == y, "error message in case of assertion failure" syntax).
 Implement __add__ so that two instances of class Matrix can be added via the + operator.
-Implement __mul__ so that two instances of class Matrix can be multiplied via the * operator.
+Implement __mul__ so that two instances of class Matrix can be multiplied via the * operator. Note that the number of columns in the first matrix must equal the number of rows in the second matrix.
 Implement __eq__ so that two instances of class Matrix can be compared via the == operator.
 Implement __hash__ so that instances of class Matrix can be used as dictionary keys.
 Note: In case you do not know how to add/multiply matrices, check this Link

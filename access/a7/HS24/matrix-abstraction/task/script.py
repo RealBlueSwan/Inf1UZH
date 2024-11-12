@@ -22,9 +22,10 @@ class Matrix:
         ]
         return Matrix(result)
 
-    def __mul__(self, other):   # the first element in the new matrix is supposed to be the sum of the first row and the first column 
-        result = [  
-            [(sum(self._data[i][k] * other._data[k][j] for k in range(len(self._data[0])))) for j in range(len(self._data[0]))] for i in range(len(self._data))
+    def __mul__(self, other):
+        assert len(self._data[0]) == len(other._data), "Number of columns of the first matrix must equal the number of rows of the second matrix"
+        result = [
+            [sum(self._data[i][k] * other._data[k][j] for k in range(len(other._data))) for j in range(len(other._data[0]))] for i in range(len(self._data))
         ]
         return Matrix(result)
 
