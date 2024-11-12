@@ -21,13 +21,13 @@ class Library:
         seen_titles = set()
         
         def collect_movies(item):
-            if isinstance(item, Movie):
+            if isinstance(item, MovieBox):
+                for movie in item.get_movies():
+                    collect_movies(movie)
+            elif isinstance(item, Movie):
                 if item.get_title() not in seen_titles:
                     seen_titles.add(item.get_title())
                     movies.append(item)
-            elif isinstance(item, MovieBox):
-                for movie in item.get_movies():
-                    collect_movies(movie)
         
         for item in self._movielist:
             collect_movies(item)

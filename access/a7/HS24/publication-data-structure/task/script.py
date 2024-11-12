@@ -1,41 +1,65 @@
 #!/usr/bin/env python3
 
-# The signatures of this class and its task methods are required for the automated grading to work.
-# You must not change the names or the list of parameters.
-# You may introduce grading/protected utility methods though.
 class Publication:
 
     def __init__(self, authors, title, year):
-
-        self.authors = authors
-        self.title = title
-        self.year = year
+        self.__authors = list(authors)
+        self.__title = title
+        self.__year = year
 
     def __eq__(self, other):
-        return (self.authors == other.authors and self.title == other.title and self.year == other.year)
+        if not isinstance(other, Publication):
+            return NotImplemented
+        return (self.__authors == other.__authors and self.__title == other.__title and self.__year == other.__year)
 
+    def __hash__(self):
+        return hash((tuple(self.__authors), self.__title, self.__year))
 
     def __str__(self):
-        authors_str = ', '.join(f'"{author}"' for author in self.authors)
-        return f'Publication([{authors_str}], "{self.title}", {self.year})'
+        authors_str = ', '.join(f'"{author}"' for author in self.__authors)
+        return f'Publication([{authors_str}], "{self.__title}", {self.__year})'
 
     def __repr__(self):
-        authors_str = ', '.join(f'"{author}"' for author in self.authors)
-        return f'Publication([{authors_str}], "{self.title}", {self.year})'
-    
-    
+        authors_str = ', '.join(f'"{author}"' for author in self.__authors)
+        return f'Publication([{authors_str}], "{self.__title}", {self.__year})'
 
-    # To implement the required functionality, you will also have to implement several
-    # of the special functions that typically include a double underscore.
-    # We've provided a starting point for one of the operators:
     def __le__(self, other):
         if not isinstance(other, Publication):
             return NotImplemented
-        # complete this implementation and add all the other necessary operators!
+        if self.__authors != other.__authors:
+            return self.__authors < other.__authors
+        if self.__title != other.__title:
+            return self.__title < other.__title
+        return self.__year <= other.__year
 
+    def __lt__(self, other):
+        if not isinstance(other, Publication):
+            return NotImplemented
+        if self.__authors != other.__authors:
+            return self.__authors < other.__authors
+        if self.__title != other.__title:
+            return self.__title < other.__title
+        return self.__year < other.__year
 
-# You can play around with your implementation in the body of the following 'if'.
-# The contained statements will be ignored while evaluating your solution.
+    def __ge__(self, other):
+        if not isinstance(other, Publication):
+            return NotImplemented
+        return not self < other
+
+    def __gt__(self, other):
+        if not isinstance(other, Publication):
+            return NotImplemented
+        return not self <= other
+
+    def get_authors(self):
+        return list(self.__authors)
+
+    def get_title(self):
+        return self.__title
+
+    def get_year(self):
+        return self.__year
+
 if __name__ == '__main__':
     references = [
         Publication(["Gamma", "Helm", "Johnson", "Vlissides"], "Design Patterns", 1994),
@@ -51,8 +75,6 @@ if __name__ == '__main__':
     p1 = Publication(["A"], "B", 1234)
     p2 = Publication(["A"], "B", 1234)
     p3 = Publication(["B"], "C", 2345)
-    #print(p1)
-    #print(p2)
     print(p1 == p2)  # True
     print(p2 == p3)  # False
     

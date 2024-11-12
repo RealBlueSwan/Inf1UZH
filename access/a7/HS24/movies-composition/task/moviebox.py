@@ -47,4 +47,4 @@ class MovieBox(Movie):
         return sum(movie.get_duration() for movie in self._movies)
 
     def get_movies(self):
-        return self._movies
+        return self._movies.copy()

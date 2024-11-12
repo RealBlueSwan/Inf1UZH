@@ -35,7 +35,7 @@ class Movie:
         return self._title
 
     def get_actors(self) -> list:
-        return self._actors
+        return self._actors.copy()
     
     def get_duration(self) -> int:
         return self._duration
