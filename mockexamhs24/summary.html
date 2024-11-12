@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"><h2>Note</h2>
+<p>There is no pass/fail for the midterm. The number of points achieved in the midterm determines the bonus obtained (if passing the final exam) according to the formula published in the first lecture.</p><h1>Your total score: 45.0 / 60</h1><br><hr><br><h2>Evaluate this!</h2>
+<p>Decide for each of the following statements whether it is true or false. You will receive full points if all your choices are correct, half points if 3 chocies are correct, and no points otherwise.</p>
+<ul>
+<li><span>This expression evaluates as True: <code>bool(int('9'))</code></span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li><li><span>This expression evaluates as True: <code>print() or True</code></span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li><li><span>This expression evaluates as 1: <code>int(6.6-5)</code></span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li><li><span>This expression evaluates as None: <code>print(1)</code></span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li></ul>
+
+<h4>Your score: 2 / 2</h4><br><hr><br><h2>Return</h2>
+<p>Decide for each of the following statements whether it is true or false. You will receive full points if all your choices are correct, half points if 3 chocies are correct, and no points otherwise.</p>
+<ul>
+<li><span>When a function call finishes without exceptions, some value is always returned.</span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li><li><span>A function call can contain multiple return statements.</span><br><span>Correct answer: True.</span><br><span>Your answer: False.</span></li><li><span><code>return print('x')</code> returns the string `x`.</span><br><span>Correct answer: False.</span><br><span>Your answer: True.</span></li><li><span>Multiple return statements can be executed within the same function call.</span><br><span>Correct answer: False.</span><br><span>Your answer: False.</span></li></ul>
+
+<h4>Your score: 0 / 2</h4><br><hr><br><h2>Theory</h2>
+<p>Decide for each of the following statements whether it is true or false. You will receive full points if all your choices are correct, half points if 3 chocies are correct, and no points otherwise.</p>
+<ul>
+<li><span>If a comparison of two objects using <code>==</code> evaluates as <code>True</code>, that means they are the same object in memory.</span><br><span>Correct answer: False.</span><br><span>Your answer: False.</span></li><li><span>A function can be referenced by multiple variables.</span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li><li><span>Functions are objects.</span><br><span>Correct answer: True.</span><br><span>Your answer: True.</span></li><li><span>Lists are immutable.</span><br><span>Correct answer: False.</span><br><span>Your answer: True.</span></li></ul>
+
+<h4>Your score: 1.0 / 2</h4><br><hr><br><h2>Higher-order Functions</h2>
+<h1>Higher-order functions</h1>
+<p>Implement a function <code>both</code> which takes three parameters: two functions <code>f</code> and <code>g</code>, and an input <code>it</code>. The function should return a tuple containing two values: the results of applying <code>f</code> and <code>g</code> to <code>it</code>.</p>
+<p>Use the following template:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">both</span>(f, g, it):
+    <span style="color: #008000; font-weight: bold">pass</span> <span style="color: #3D7B7B; font-style: italic"># Replace this with your implementation</span>
+</pre></div>
+
+<p>The following example illustrates how the solution function may be called:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000">print</span>( both(<span style="color: #008000">str</span><span style="color: #666666">.</span>lower, <span style="color: #008000">str</span><span style="color: #666666">.</span>upper, <span style="color: #BA2121">&quot;HeLlO&quot;</span>) )
+<span style="color: #008000">print</span>( both(<span style="color: #008000">int</span>, <span style="color: #008000">float</span>, <span style="color: #BA2121">&quot;1&quot;</span>) )
+</pre></div>
+
+<p>The calls above should produce the following output:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>(&#39;hello&#39;, &#39;HELLO&#39;)
+(1, 1.0)
+</pre></div>
+
+<h4>Sample solution:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#!/usr/bin/env python3</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">both</span>(f, g, it):
+    <span style="color: #008000; font-weight: bold">return</span> (f(it), g(it))
+</pre></div>
+
+<h4>Your submission:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">both</span>(f, g, it):
+    <span style="color: #008000; font-weight: bold">return</span> (f(it), g(it))
+</pre></div>
+
+<h4>Test results:</h4><ul><li>Correct result for complex example ... ok</li><li>Correct result given custom functions ... ok</li><li>Correct result given int, float ... ok</li><li>Correct result given len, sum ... ok</li><li>Correct result given str.lower, str.upper ... ok</li><li>The function body calls functions ... ok</li></ul><h4>Submission score: 6 / 6</h4><br><hr><br><h2>Code Golf</h2>
+<h1>Code Golf</h1>
+<p>Implement a function <code>caser</code> which takes a string as parameter <code>s</code>. If <code>s</code> is longer than 5 characters, <code>caser</code> should turn <code>s</code> into upper-case and return it. If <code>s</code>'s length is shorter or equal to 5 characters, it should turn <code>s</code> into lower-case and return it.</p>
+<p><strong>Important</strong>: You must find a solution that contains <strong>at most 38 non-space characters</strong> in the function body. In other words, while the function signature is not counted, whatever you replace <code>pass</code> with may not contain more than 38 characters (not counting spaces).</p>
+<p>Use the following template:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">caser</span>(s):
+    <span style="color: #008000; font-weight: bold">pass</span> <span style="color: #3D7B7B; font-style: italic"># Replace this with your implementation</span>
+</pre></div>
+
+<p>The following example illustrates how the solution function may be called:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000">print</span>( caser(<span style="color: #BA2121">&quot;Hello&quot;</span>) )
+<span style="color: #008000">print</span>( caser(<span style="color: #BA2121">&quot;Bananas&quot;</span>) )
+<span style="color: #008000">print</span>( caser(<span style="color: #BA2121">&quot;AbC&quot;</span>) )
+<span style="color: #008000">print</span>( caser(<span style="color: #BA2121">&quot;i don&#39;t know!&quot;</span>) )
+</pre></div>
+
+<p>The calls above should produce the following output:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>hello
+BANANAS
+abc
+I DON&#39;T KNOW!
+</pre></div>
+
+<h4>Sample solution:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#!/usr/bin/env python3</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">caser</span>(s):
+    <span style="color: #008000; font-weight: bold">return</span> s<span style="color: #666666">.</span>upper() <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(s) <span style="color: #666666">&gt;</span> <span style="color: #666666">5</span> <span style="color: #008000; font-weight: bold">else</span> s<span style="color: #666666">.</span>lower()
+</pre></div>
+
+<h4>Your submission:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">caser</span>(s):
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(s) <span style="color: #666666">&lt;=</span> <span style="color: #666666">5</span>:
+        <span style="color: #008000; font-weight: bold">return</span> s<span style="color: #666666">.</span>lower()
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">return</span> s<span style="color: #666666">.</span>upper()
+</pre></div>
+
+<h4>Test results:</h4><ul><li>Code is short enough, and correct result for empty string ... FAIL</li><li>Code is short enough, and correct result for string with exactly 5 characters (lowercase) ... FAIL</li><li>Code is short enough, and correct result for string with exactly 6 characters (uppercase) ... FAIL</li><li>Not considering length, code returns a string for arbitrary strings ... ok</li><li>Not considering length, correct result for arbitrary strings ... ok</li></ul><h4>Submission score: 2 / 5</h4><br><hr><br><h2>Numbers</h2>
+<h1>Numbers</h1>
+<p>Implement a function <code>div_sums</code> which takes two lists of numbers, <code>numbers</code> and <code>divisors</code>, as parameters. For each divisor in the <code>divisors</code>, the function should take all numbers in <code>numbers</code> divisible by the divisor and sum them up. The function should return the resulting sums as a list.</p>
+<p>For example, given <code>numbers = [9, 2, 1, 4, 6, 8]</code> and <code>divisors = [2, 4]</code>, the numbers 2, 4 and 8 are divisible by 2, and the numbers 4 and 8 are divisible by 4, resulting in a return value of [14, 12], because 2+4+8=14, and 4+8=12.</p>
+<p>If none of the numbers are divisible by a given divisor, the corresponding list element in the return value should be 0.</p>
+<p>Use the following template:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">div_sums</span>(numbers, divisors):
+    <span style="color: #008000; font-weight: bold">pass</span> <span style="color: #3D7B7B; font-style: italic"># Replace this with your implementation</span>
+</pre></div>
+
+<p>The following example illustrates how the solution function may be called:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000">print</span>(div_sums([<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">1</span>, <span style="color: #666666">9</span>], [<span style="color: #666666">3</span>, <span style="color: #666666">2</span>])) <span style="color: #3D7B7B; font-style: italic"># [3+6+9, 2+6] = [18, 8]</span>
+<span style="color: #008000">print</span>(div_sums([<span style="color: #666666">4</span>, <span style="color: #666666">4</span>, <span style="color: #666666">8</span>], [<span style="color: #666666">2</span>, <span style="color: #666666">3</span>]))          <span style="color: #3D7B7B; font-style: italic"># [4+4+8, _] = [16, 0] (no numbers divisble by 3)</span>
+</pre></div>
+
+<p>The calls above should produce the following output:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>[18, 8]
+[16, 0]
+</pre></div>
+
+<h4>Sample solution:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#!/usr/bin/env python3</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">div_sums</span>(numbers, divisors):
+    res <span style="color: #666666">=</span> []
+    <span style="color: #008000; font-weight: bold">for</span> d <span style="color: #AA22FF; font-weight: bold">in</span> divisors:
+        match <span style="color: #666666">=</span> [n <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> numbers <span style="color: #008000; font-weight: bold">if</span> n <span style="color: #666666">%</span> d <span style="color: #666666">==</span> <span style="color: #666666">0</span>]
+        res<span style="color: #666666">.</span>append(<span style="color: #008000">sum</span>(match))
+    <span style="color: #008000; font-weight: bold">return</span> res
+</pre></div>
+
+<h4>Your submission:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">div_sums</span>(numbers, divisors):
+    <span style="color: #008000; font-weight: bold">return</span> [<span style="color: #008000">sum</span>(i <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> numbers <span style="color: #008000; font-weight: bold">if</span> i <span style="color: #666666">%</span> k <span style="color: #666666">==</span> <span style="color: #666666">0</span>) <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> divisors ]
+</pre></div>
+
+<h4>Test results:</h4><ul><li>Correct result given empty divisors ... ok</li><li>Correct result given empty numbers ... ok</li><li>Correct result given just one divisor ... ok</li><li>Correct result given large divisors ... ok</li><li>Correct result given negative numbers ... ok</li><li>Correct result given no given numbers are divisible by any given divisors ... ok</li><li>Correct result given prime divisors ... ok</li><li>Correct result given some numbers not divisible by some divisor ... ok</li><li>Correct result given task example ... ok</li><li>Correct return type ... ok</li></ul><h4>Submission score: 10 / 10</h4><br><hr><br><h2>Library</h2>
+<h1>Python Standard library</h1>
+<p>URL components may only contain a limited number of characters. Most special characters (including spaces) need to be encoded using the <code>%xx</code> escape. That's why, for example, the URL to the Wikipedia article on El Niño,
+<a href="https://en.wikipedia.org/wiki/El_Ni%C3%B1o%E2%80%93Southern_Oscillation" target="_blank">
+https://en.wikipedia.org/wiki/El_Ni%C3%B1o%E2%80%93Southern_Oscillation
+</a>,
+contains all those obscure characters.</p>
+<p>Implement a function <code>encode</code> which takes a string as parameter <code>s</code>. The function should replace special characters in <code>s</code> using the <code>%xx</code> escape and return the result. For example, given the string <code>/El Niño/</code>, the function should return the string <code>/El%20Ni%C3%B1o/</code>.</p>
+<p>Don't implement this complex functionality yourself. Find and use the existing implementation provided by the <a href="https://docs.python.org/3/library/urllib.parse.html" target="_blank">
+urllib.parse Module
+</a>.</p>
+<p>Use the following template:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">encode</span>(s):
+    <span style="color: #008000; font-weight: bold">pass</span> <span style="color: #3D7B7B; font-style: italic"># Replace this with your implementation</span>
+</pre></div>
+
+<p>The following example illustrates how the solution function may be called:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000">print</span>( encode(<span style="color: #BA2121">&quot;/El Niño/&quot;</span>) )
+<span style="color: #008000">print</span>( encode(<span style="color: #BA2121">&quot;Hello, world!&quot;</span>) )
+</pre></div>
+
+<p>The calls above should produce the following output:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>/El%20Ni%C3%B1o/
+Hello%2C%20world%21
+</pre></div>
+
+<h4>Sample solution:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#!/usr/bin/env python3</span>
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">urllib.parse</span> <span style="color: #008000; font-weight: bold">import</span> quote
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">encode</span>(s):
+    <span style="color: #008000; font-weight: bold">return</span> quote(s)
+</pre></div>
+
+<h4>Your submission:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">urllib.parse</span> <span style="color: #008000; font-weight: bold">import</span> quote
+
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">encode</span>(s):
+    <span style="color: #008000; font-weight: bold">return</span> quote(s)
+</pre></div>
+
+<h4>Test results:</h4><ul><li>encode function works as expected ... ok</li><li>urllib.parse.quote is imported ... ok</li></ul><h4>Submission score: 6 / 6</h4><br><hr><br><h2>Comprehensions</h2>
+<h1>Comprehensions</h1>
+<p>Implement a function <code>divisor_finder</code> which takes two parameters: a list of integers <code>numbers</code> and another list of integers <code>potential_divisors</code>. The function should return a dictionary where:</p>
+<ul>
+<li>The keys are the individual numbers from the <code>numbers</code> list.</li>
+<li>The values are lists containing all elements from <code>potential_divisors</code> which evenly divide the corresponding number (i.e., are divisors of that number).</li>
+</ul>
+<p>You may assume that your function will only be called with parameters that match the given description.</p>
+<p><strong>Important</strong>: The function <strong>must</strong> start with <code>return</code> and it <strong>must</strong> return a dict comprehension outright. You are not allowed to build data structures using <code>for</code> loops or declare temporary variables.</p>
+<p><strong>Tip</strong>: Remember that a number is evenly divisible by another if the remainder of their division is zero. You can use the modulo operator <code>%</code> to check this.</p>
+<p>Use the following template:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">divisor_finder</span>(numbers, potential_divisors):
+    <span style="color: #008000; font-weight: bold">pass</span> <span style="color: #3D7B7B; font-style: italic"># you MUST return a dict comprehension outright</span>
+</pre></div>
+
+<p>The following example illustrates how the solution function may be called:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000">print</span>(divisor_finder([<span style="color: #666666">12</span>], [<span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>]))
+<span style="color: #008000">print</span>(divisor_finder([<span style="color: #666666">12</span>, <span style="color: #666666">14</span>, <span style="color: #666666">16</span>], [<span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>]))
+<span style="color: #008000">print</span>(divisor_finder([<span style="color: #666666">30</span>, <span style="color: #666666">42</span>, <span style="color: #666666">70</span>], [<span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">5</span>, <span style="color: #666666">7</span>]))
+</pre></div>
+
+<p>The calls above should produce the following output:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>{12: [2, 3, 4]}
+{12: [2, 3, 4], 14: [2], 16: [2, 4]}
+{30: [2, 3, 5], 42: [2, 3, 7], 70: [2, 5, 7]}
+</pre></div>
+
+<h4>Sample solution:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#!/usr/bin/env python3</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">divisor_finder</span>(numbers, potential_divisors):
+    <span style="color: #008000; font-weight: bold">return</span> {num: [d <span style="color: #008000; font-weight: bold">for</span> d <span style="color: #AA22FF; font-weight: bold">in</span> potential_divisors <span style="color: #008000; font-weight: bold">if</span> num <span style="color: #666666">%</span> d <span style="color: #666666">==</span> <span style="color: #666666">0</span>] <span style="color: #008000; font-weight: bold">for</span> num <span style="color: #AA22FF; font-weight: bold">in</span> numbers}
+</pre></div>
+
+<h4>Your submission:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">divisor_finder</span>(numbers, potential_divisors):
+    <span style="color: #008000; font-weight: bold">return</span> {n :[i <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> potential_divisors <span style="color: #008000; font-weight: bold">if</span> n <span style="color: #666666">%</span> i <span style="color: #666666">==</span> <span style="color: #666666">0</span>] <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> numbers}
+</pre></div>
+
+<h4>Test results:</h4><ul><li>Returns dict comprehension and correct result for a more complex case ... ok</li><li>Returns dict comprehension and correct result for empty list ... ok</li><li>Returns dict comprehension and correct result for larger numbers ... ok</li><li>Returns dict comprehension and correct result for non-empty numbers but empty potential_divisors list ... ok</li><li>Returns dict comprehension and correct result for prime divisors ... ok</li><li>Returns dict comprehension and correct result for task example ... ok</li></ul><h4>Submission score: 12 / 12</h4><br><hr><br><h2>Classes</h2>
+<h1>Classes</h1>
+<p>Implement a class <code>Recipe</code> which represents a cooking recipe. When instantiating a <code>Recipe</code>, it should be provided two parameters:</p>
+<ul>
+<li>A name</li>
+<li>A dictionary of ingredients</li>
+</ul>
+<p>It is assumed that the recipe serves one person. Hence, the <code>Recipe</code> class should provide a method <code>ingredients_for_servings</code> which returns the dictionary of ingredients, however with each amount multiplied by an integer provided as a parameter to <code>ingredients_for_servings</code>.</p>
+<p>When printing a <code>Recipe</code>, a string beginning with <code>"A recipe for "</code> and ending with the name of the recipe should be shown. When representing a <code>Recipe</code>, the resulting string should contain the following things in order:</p>
+<ol>
+<li>The name of the recipe</li>
+<li>An opening brace <code>(</code></li>
+<li>The string representation of the dictionary as provided by Python</li>
+<li>A closing brace <code>)</code></li>
+</ol>
+<p>Additionally, implement a class <code>DietRecipe</code> which is a more specialized form of Recipe. A <code>DietRecipe</code> should accept an additional initialization parameter indicating the number of calories in one serving. <code>DietRecipe</code> should provide a method <code>servings_for_calories</code> taking a number of calories permissible and returning the number of servings allowed to reach it. For example, if a recipe has 200 calories, and the method is given 300 calories as a parameter, it should return 1.5, because that's the number of servings permissible given the allowed calories.</p>
+<p>Use the following template:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Recipe</span>():
+    <span style="color: #008000; font-weight: bold">pass</span> <span style="color: #3D7B7B; font-style: italic"># Replace this with your implementation</span>
+</pre></div>
+
+<p>The following example illustrates how the solution function may be called:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>i <span style="color: #666666">=</span> {<span style="color: #BA2121">&quot;Butter (grams)&quot;</span>: <span style="color: #666666">20</span>, <span style="color: #BA2121">&quot;Garlic, smashed (cloves)&quot;</span>: <span style="color: #666666">1</span>, <span style="color: #BA2121">&quot;Salt (tsp)&quot;</span>: <span style="color: #666666">.25</span>}
+recipe <span style="color: #666666">=</span> Recipe(<span style="color: #BA2121">&quot;Garlic butter&quot;</span>, i)
+<span style="color: #008000">print</span>(recipe<span style="color: #666666">.</span>ingredients_for_servings(<span style="color: #666666">3</span>))
+<span style="color: #008000">print</span>(recipe)
+<span style="color: #008000">print</span>([recipe])
+diet_recipe <span style="color: #666666">=</span> DietRecipe(<span style="color: #BA2121">&quot;Garlic butter&quot;</span>, i, <span style="color: #666666">150</span>)
+<span style="color: #008000">print</span>(diet_recipe<span style="color: #666666">.</span>servings_for_calories(<span style="color: #666666">300</span>))
+</pre></div>
+
+<p>The calls above should produce the following output:</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>{&#39;Butter (grams)&#39;: 60, &#39;Garlic, smashed (cloves)&#39;: 3, &#39;Salt (tsp)&#39;: 0.75}
+A recipe for Garlic butter
+[Recipe({&#39;Butter (grams)&#39;: 20, &#39;Garlic, smashed (cloves)&#39;: 1, &#39;Salt (tsp)&#39;: 0.25})]
+2.0
+</pre></div>
+
+<h4>Sample solution:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#!/usr/bin/env python3</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Recipe</span>():
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, name, ingredients):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>name <span style="color: #666666">=</span> name
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>ingredients <span style="color: #666666">=</span> ingredients
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ingredients_for_servings</span>(<span style="color: #008000">self</span>, n):
+        <span style="color: #008000; font-weight: bold">return</span> {name: amount <span style="color: #666666">*</span> n <span style="color: #008000; font-weight: bold">for</span> name, amount <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>ingredients<span style="color: #666666">.</span>items()}
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__str__</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">f&quot;A recipe for </span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">self</span><span style="color: #666666">.</span>name<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__repr__</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">f&quot;Recipe(</span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">repr</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>ingredients)<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">)&quot;</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">DietRecipe</span>(Recipe):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, name, ingredients, calories):
+        <span style="color: #008000">super</span>()<span style="color: #666666">.</span><span style="color: #0000FF">__init__</span>(name, ingredients)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>calories <span style="color: #666666">=</span> calories
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">servings_for_calories</span>(<span style="color: #008000">self</span>, n):
+        <span style="color: #008000; font-weight: bold">return</span> n <span style="color: #666666">/</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>calories
+</pre></div>
+
+<h4>Your submission:</h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Recipe</span>():
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, name, ingdict :<span style="color: #008000">dict</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>name <span style="color: #666666">=</span> name
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>ingdict <span style="color: #666666">=</span> ingdict
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ingredients_for_servings</span>(<span style="color: #008000">self</span>, anz):
+        <span style="color: #008000; font-weight: bold">pass</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__str__</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">pass</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">DietRecipe</span>(Recipe):
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, name, ingdict, cal):
+        <span style="color: #008000">super</span>()<span style="color: #666666">.</span><span style="color: #0000FF">__init__</span>(name, ingdict)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>cal <span style="color: #666666">=</span> cal
+    
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__str__</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">super</span>()<span style="color: #666666">.</span><span style="color: #0000FF">__str__</span>()
+    
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">servings_for_calories</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">pass</span>
+    
+</pre></div>
+
+<h4>Test results:</h4><ul><li>DietRecipe can be initialized with name, ingredients, and calories ... ok</li><li>DietRecipe does not itself implement ingredients_for_servings, __str__, and __repr__ ... FAIL</li><li>DietRecipe inherits Recipe ... ok</li><li>DietRecipe's ingredients_for_servings, __str__, and __repr__  work and function the same as Recipe's ... ERROR</li><li>DietRecipe.__init__ calls super().__init__ ... ok</li><li>Recipe can be initialized with name and ingredients ... ok</li><li>__repr__ method returns (due to erratum: ends with) correct string representation ... FAIL</li><li>__str__ method returns correct string representation ... ERROR</li><li>ingredients_for_servings returns correct multiplied ingredients ... FAIL</li><li>servings_for_calories method returns correct number of servings ... ERROR</li></ul><h4>Submission score: 6.0 / 15</h4></body></html>
