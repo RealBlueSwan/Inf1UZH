@@ -1,4 +1,3 @@
-
 In this task you are going to practice *black-box testing*, i.e., you will test a function, just based on its specification and with knowledge from the domain, but without knowing a concrete implementation.
 
 Assume that you are repsonsible for testing a `sort` function, which is being provided by a third party. The implementation should be consistent with the following specification:
