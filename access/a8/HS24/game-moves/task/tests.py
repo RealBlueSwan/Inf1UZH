@@ -36,7 +36,7 @@ class MoveTestSuite(TestCase):
         #self.assertEqual(expected, actual)
 
     def test_move_up(self):
-        # NOTE: this test case is buggy and needs fixing!
+        # NOTE: this test case is buggy and needs fixing!   (i.e., `down` < `left` < `right` < `up`)
         state = (
             "#####   ",
             "###    #",
@@ -47,11 +47,11 @@ class MoveTestSuite(TestCase):
         expected = (
             (
                 "#####   ",
-                "###  o #",
+                "### o  #",
                 "#     ##",
                 "   #####"
             ),
-            ("left", "up")
+            ("down", "left", "right")
         )
         # uncomment the following line once you've implemented move
         #self.assertEqual(expected, actual)
