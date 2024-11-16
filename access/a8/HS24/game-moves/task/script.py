@@ -11,17 +11,7 @@ def move(state, direction):
     new_bord = actual_move(state, direction)
     new_moves = move_check(new_bord)
 
-    """
-    (
-        (
-            "#####   ",
-            "###    #",
-            "#    o##",
-            "   #####"
-        ),
-        ("left", "up")
-    )
-    """
+    new_bord = (''.join(row) for row in new_bord)
 
     return (new_bord, new_moves)
 
@@ -31,11 +21,12 @@ def move_check(state, direction = None):    # Check if the move is even possible
     
     move_list=possible_moves(state, (x, y)) # Creates a movelist, but if movelist is empty raises a warning
 
-    if direction == None:   # returns the move_list
+    if direction == None:                   # returns the move_list
         return move_list
-
-    if direction not in move_list and direction != None:    # Check if there is a move that is possible
-        raise Warning("The move is not possible")
+    
+    if direction != None:
+        if direction not in move_list:      # Check if there is a move that is possible
+            raise Warning("The move is not possible")
     
 def game_state_check(state):                # Check if the bord is valid
 
@@ -47,7 +38,7 @@ def one_character_check(state):             # Check if there is a character on t
 
     counter = 0
     for row in state:
-        for character in row.split():
+        for character in list(row):
             if character not in (" ", "#", "o"):
                 raise Warning(f"invalid character: {character}")            # test_invalid_bord_character(self):
             if character == "o":
@@ -72,10 +63,10 @@ def bord_dimension_checker(state):          # Check if the bord has the right di
 
 def character_finder(state):                # find the idx of player character
 
-    for y in len(state):
-        row = state[y].split()
+    for y in range(len(state)):
+        row = list(state[y])
 
-        for x in len(row):
+        for x in range(len(row)):
             if row[x] == 'o':
                 return x, y
 
@@ -83,56 +74,44 @@ def possible_moves(state, player_idx):      # Returns a list of all the possible
     move_list = []
     x, y = player_idx
 
-    if state[y+1].split()[x] == ' ':        # Check if one idx down is ' '
+    if list(state[y+1])[x] == ' ':        # Check if one idx down is ' '
         move_list.append("down")
 
-    if state[y].split()[x-1] == ' ':        # Check if one idx left is ' '
+    if list(state[y])[x-1] == ' ':        # Check if one idx left is ' '
         move_list.append("left")
 
-    if state[y].split()[x+1] == ' ':        # Check if one idx right is ' '
+    if list(state[y])[x+1] == ' ':        # Check if one idx right is ' '
         move_list.append("right")
 
-    if state[y-1].split()[x] == ' ':        # Check if one idx up is ' '
+    if list(state[y-1])[x] == ' ':        # Check if one idx up is ' '
         move_list.append("up")
 
-    if len(move_list) == 0:
+    if move_list == []:
         raise Warning("There are no possible moves")
+    
+    return tuple(move_list)
 
 def actual_move(state, direction):          # Brain of the move
     
     idx_player = character_finder(state)    # identidy the player index
-    idx_move = move_idx(state, direction)   # identify the move index
+    idx_move = move_idx(idx_player, direction)   # identify the move index
 
     return swapper(state, idx_player, idx_move)
 
-def move_idx(state, direction):
-    if direction == "down":
-        for y in len(state):
-            row = state[y].split()
+def move_idx(idx_player, direction):        # Takes old position of player and adds the direction to x y
+    x, y = idx_player
 
-            for x in len(row):
-                return x, y+1
+    if direction == "down":
+        return x, y+1
         
     elif direction == "left":
-        for y in len(state):
-            row = state[y].split()
-
-            for x in len(row):
-                return x-1, y
+        return x-1, y
     
     elif direction == "right":
-        for y in len(state):
-            row = state[y].split()
-
-            for x in len(row):
-                return x+1, y
+        return x+1, y
         
     elif direction == "up":
-        for y in len(state):
-            row = state[y].split()
-
-            for x in len(row):
-                return x, y-1
+        return x, y-1
 
 def swapper(original, old_idx, new_player): # Swaps the old char with ' ' and new location with 'o'
     ox, oy = old_idx
@@ -140,11 +119,11 @@ def swapper(original, old_idx, new_player): # Swaps the old char with ' ' and ne
 
     new_bord = []
 
-    for row in len(original):
+    for row in range(len(original)):
         new_row = []
-        row_list = original[row].split()    # right here......... 
-        for char in len(original[row]):     # idxing
-            if row == oy and char == ox:    # old char
+        row_list = list(original[row])              # right here......... 
+        for char in range(len(original[row])):      # idxing
+            if row == oy and char == ox:            # old char
                 new_row.append(' ')
             elif row == ny and char == nx:
                 new_row.append('o')
