@@ -3,7 +3,9 @@
 #
 # This signature is required for the automated grading to work.
 # You must not rename the function or change its list of parameters.
-def move(state, direction):
+def move(state, direction):                 # Brain
+    if not isinstance(direction, str) or direction == "":
+        raise Warning("No direction provided")
     game_state_check(state)
     move_check(state, direction)
 
@@ -11,9 +13,7 @@ def move(state, direction):
     new_bord = actual_move(state, direction)
     new_moves = move_check(new_bord)
 
-    new_bord = (''.join(row) for row in new_bord)
-
-    return (new_bord, new_moves)
+    return new_bord, new_moves
 
 def move_check(state, direction = None):    # Check if the move is even possible or if the provided direction is not in the possible move list
 
@@ -74,16 +74,16 @@ def possible_moves(state, player_idx):      # Returns a list of all the possible
     move_list = []
     x, y = player_idx
 
-    if list(state[y+1])[x] == ' ':        # Check if one idx down is ' '
+    if y + 1 < len(state) and list(state[y+1])[x] == ' ':        # Check if one idx down is ' ' and within bounds
         move_list.append("down")
 
-    if list(state[y])[x-1] == ' ':        # Check if one idx left is ' '
+    if x - 1 >= 0 and list(state[y])[x-1] == ' ':        # Check if one idx left is ' ' and within bounds
         move_list.append("left")
 
-    if list(state[y])[x+1] == ' ':        # Check if one idx right is ' '
+    if x + 1 < len(state[y]) and list(state[y])[x+1] == ' ':        # Check if one idx right is ' ' and within bounds
         move_list.append("right")
 
-    if list(state[y-1])[x] == ' ':        # Check if one idx up is ' '
+    if y - 1 >= 0 and list(state[y-1])[x] == ' ':        # Check if one idx up is ' ' and within bounds
         move_list.append("up")
 
     if move_list == []:
@@ -129,9 +129,10 @@ def swapper(original, old_idx, new_player): # Swaps the old char with ' ' and ne
                 new_row.append('o')
             else:
                 new_row.append(row_list[char])
-        new_bord.append(new_row)
 
-    return new_bord
+        new_bord.append(''.join(new_row))
+
+    return tuple(new_bord)
 
 # Check if the move you want to make is possible
 # Rocks "#" or lines are not possible to move to, only ' ', so maybe just check for the ' ' instead of everything else. 
