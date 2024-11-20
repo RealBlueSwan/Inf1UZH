@@ -3,8 +3,10 @@
 # This signature is required for the automated grading to work.
 # Do not rename the function or change its list of parameters!
 def factorial(n):
+    if n == 0:
+        return 1
     # implement this function
-    pass
+    return n *  factorial(n-1)
 
 
 # The following line calls the function and prints the return
