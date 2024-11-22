@@ -31,3 +31,12 @@ class PublicTestSuite(TestCase):
         self._assert_return_type(actual, expected)
         m = f"The powerset(nums) function should return '{expected}' but returned '{actual}'"
         self.assertEqual(actual, expected, m)
+
+    def test_empty_list(self):      # - If the input list is empty, the function should return a list containing an empty list.
+        test_set = []
+        expected = []
+        actual = script.powerset(test_set)
+        self._assert_return_type(actual, expected)
+        m = f"The powerset(nums) function should return '{expected}' but returned '{actual}'"
+        self.assertEqual(actual, expected, m)
+
