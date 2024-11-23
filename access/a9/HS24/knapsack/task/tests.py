@@ -30,3 +30,47 @@ class PublicTestSuite(TestCase):
         m = f"Your function should return {expected} but returned {actual}!"
         self._check_return_type(actual, expected)
         self.assertEqual(actual, expected, msg=m)
+
+    def test_knapsack_empty(self):
+        expected = 0
+        actual = script.knapsack(50, [], [])
+        m = f"Your function should return {expected} but returned {actual}!"
+        self._check_return_type(actual, expected)
+        self.assertEqual(actual, expected, msg=m)
+
+    def test_knapsack_no_capacity(self):
+        expected = 0
+        actual = script.knapsack(0, [10, 20, 30], [60, 100, 120])
+        m = f"Your function should return {expected} but returned {actual}!"
+        self._check_return_type(actual, expected)
+        self.assertEqual(actual, expected, msg=m)
+
+    def test_knapsack_single_item_fits(self):
+        expected = 60
+        actual = script.knapsack(10, [10], [60])
+        m = f"Your function should return {expected} but returned {actual}!"
+        self._check_return_type(actual, expected)
+        self.assertEqual(actual, expected, msg=m)
+
+    def test_knapsack_single_item_does_not_fit(self):
+        expected = 0
+        actual = script.knapsack(5, [10], [60])
+        m = f"Your function should return {expected} but returned {actual}!"
+        self._check_return_type(actual, expected)
+        self.assertEqual(actual, expected, msg=m)
+
+    def test_knapsack_multiple_items_some_fit(self):
+        expected = 160
+        actual = script.knapsack(30, [10, 20, 30], [60, 100, 120])
+        m = f"Your function should return {expected} but returned {actual}!"
+        self._check_return_type(actual, expected)
+        self.assertEqual(actual, expected, msg=m)
+
+    def test_knapsack_all_items_fit(self):
+        expected = 280
+        actual = script.knapsack(60, [10, 20, 30], [60, 100, 120])
+        m = f"Your function should return {expected} but returned {actual}!"
+        self._check_return_type(actual, expected)
+        self.assertEqual(actual, expected, msg=m)
+
+
