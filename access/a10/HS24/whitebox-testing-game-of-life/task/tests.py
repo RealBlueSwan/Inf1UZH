@@ -35,5 +35,97 @@ class EvolveTestSuite(TestCase):
             "--------------"
         ), 5)
         actual = evolve(field, 4)
-        # self.assert...
+        self.assertEqual(expected, actual)
 
+    def test_only_one_neighbor(self):   # A cell that is populated and has only one neighbor dies of solitude and becomes unpopulated.
+        field = (
+            "--------------",
+            "|         #  |",
+            "|    ##   #  |",
+            "|            |",
+            "|   #        |",
+            "|   #    ##  |",
+            "--------------"
+        )
+        expected = ((
+            "--------------",
+            "|            |",
+            "|            |",
+            "|            |",
+            "|            |",
+            "|            |",
+            "--------------"
+        ), 0)
+        actual = evolve(field, 1)
+        self.assertEqual(expected, actual)
+
+    def test_has_no_neighbors(self):    # A cell that is populated and has no populated neighbors dies of solitude and becomes unpopulated.
+        field = (
+            "--------------",
+            "|         #  |",
+            "|    #       |",
+            "|            |",
+            "|            |",
+            "|   #    #   |",
+            "--------------"
+        )
+        expected = ((
+            "--------------",
+            "|            |",
+            "|            |",
+            "|            |",
+            "|            |",
+            "|            |",
+            "--------------"
+        ), 0)
+        actual = evolve(field, 1)
+        self.assertEqual(expected, actual)
+
+    def test_overpopulation_born(self):      # A cell that is populated and has four or more populated neighbors dies due to overpopulation and becomes unpopulated. & Born
+        field = (
+            "--------------",
+            "|    #       |",
+            "|   ###      |",
+            "|    #       |",
+            "|            |",
+            "|            |",
+            "--------------"
+        )
+        expected = ((
+            "--------------",
+            "|    #       |",
+            "|   # #      |",
+            "|   ###      |",
+            "|            |",
+            "|            |",
+            "--------------"
+        ), 6)
+        actual = evolve(field, 1)
+        self.assertEqual(expected, actual)
+
+    def test_stays_alive(self):    # A cell that is populated and has two or three populated neighbors survives and stays populated.
+        field = (
+            "--------------",
+            "|    #       |",
+            "|   # #      |",
+            "|    #       |",
+            "|            |",
+            "|            |",
+            "--------------"
+        )
+        expected = ((
+            "--------------",
+            "|    #       |",
+            "|   # #      |",
+            "|    #       |",
+            "|            |",
+            "|            |",
+            "--------------"
+        ), 4)
+        actual = evolve(field, 1)
+        self.assertEqual(expected, actual)
+
+
+    """
+    * For cells next to the frame, frame cells are considered unpopulated from the cell's perspective.
+    """

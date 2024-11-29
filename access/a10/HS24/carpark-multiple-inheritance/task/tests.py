@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from task.combustion_car import CombustionCar
-from task.electric_car import ElectricCar
-from task.hybrid_car import HybridCar
+from combustion_car import CombustionCar
+from electric_car import ElectricCar
+from hybrid_car import HybridCar
 
 
 class TestCars(TestCase):
@@ -16,6 +16,23 @@ class TestCars(TestCase):
         c = CombustionCar(40.0, 8.0)
         c.drive(25.0)
         self.assertAlmostEqual(38.0, c.get_gas_tank_status()[0], delta=0.001)
+
+    def test_electric_remaining_range(self):
+        e = ElectricCar(25.0, 500.0)
+        self.assertAlmostEqual(500.0, e.get_remaining_range(), delta=0.001)
+
+    def test_electric_drive(self):
+        e = ElectricCar(25.0, 500.0)
+        e.drive(100.0)
+        self.assertAlmostEqual(20.0, e.get_battery_status()[0], delta=0.001)
+
+    def test_hybrid_switch_modes(self):
+        h = HybridCar(40.0, 8.0, 25.0, 500.0)
+        h.switch_to_combustion()
+        self.assertEqual(h.mode, 1)
+        h.switch_to_electric()
+        self.assertEqual(h.mode, 0)
+
 
     # This current test suite only contains very basic test cases. By now,
     # you have some experience in writing test cases. We strongly encourage
