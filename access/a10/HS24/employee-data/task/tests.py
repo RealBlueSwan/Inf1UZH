@@ -20,6 +20,45 @@ class MyTestSuite(TestCase):
         actual = script.organize_employee_data(employees)
         self.assertEqual(expected, actual)
 
+    def test_empty_list(self):
+        employees = []
+        expected = {}
+        actual = script.organize_employee_data(employees)
+        self.assertEqual(expected, actual)
+
+    def test_single_employee(self):
+        employees = [('Alice', 'Engineering', 70000)]
+        expected = {'Engineering': {'Alice': 70000}}
+        actual = script.organize_employee_data(employees)
+        self.assertEqual(expected, actual)
+
+    def test_duplicate_names(self):
+        employees = [
+            ('Alice', 'Engineering', 70000),
+            ('Alice', 'Engineering', 75000)
+        ]
+        expected = {'Engineering': {'Alice': 75000}}
+        actual = script.organize_employee_data(employees)
+        self.assertEqual(expected, actual)
+
+    def test_multiple_departments(self):
+        employees = [
+            ('Alice', 'Engineering', 70000),
+            ('Bob', 'HR', 50000),
+            ('Charlie', 'Engineering', 80000),
+            ('David', 'Sales', 45000),
+            ('Eve', 'HR', 52000),
+            ('Frank', 'Marketing', 60000)
+        ]
+        expected = {
+            'Engineering': {'Alice': 70000, 'Charlie': 80000},
+            'HR': {'Bob': 50000, 'Eve': 52000},
+            'Sales': {'David': 45000},
+            'Marketing': {'Frank': 60000}
+        }
+        actual = script.organize_employee_data(employees)
+        self.assertEqual(expected, actual)
+
     # This current test suite only contains very basic test cases. By now,
     # you have some experience in writing test cases. We strongly encourage
     # you to implement further test cases. The additional tests can be run via
