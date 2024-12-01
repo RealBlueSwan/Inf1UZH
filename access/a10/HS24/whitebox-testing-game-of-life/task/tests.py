@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from unittest import TestCase
-from task.script import evolve
+from task.script import evolve, Warning
 
 
 # You are supposed to develop the functionality in a test-driven way.
@@ -40,8 +40,8 @@ class EvolveTestSuite(TestCase):
     def test_only_one_neighbor(self):   # A cell that is populated and has only one neighbor dies of solitude and becomes unpopulated.
         field = (
             "--------------",
-            "|         #  |",
-            "|    ##   #  |",
+            "|     #   #  |",
+            "|     #   #  |",
             "|            |",
             "|   #        |",
             "|   #    ##  |",
@@ -93,13 +93,13 @@ class EvolveTestSuite(TestCase):
         )
         expected = ((
             "--------------",
-            "|    #       |",
+            "|   ###      |",
             "|   # #      |",
             "|   ###      |",
             "|            |",
             "|            |",
             "--------------"
-        ), 6)
+        ), 8)
         actual = evolve(field, 1)
         self.assertEqual(expected, actual)
 
@@ -125,6 +125,75 @@ class EvolveTestSuite(TestCase):
         actual = evolve(field, 1)
         self.assertEqual(expected, actual)
 
+    def test_invalid_world_type(self):
+        with self.assertRaises(Warning):
+            evolve(["invalid", "world"], 1)
+
+    def test_invalid_world_characters(self):
+        field = (
+            "--------------",
+            "|            |",
+            "|   ###      |",
+            "|   #  @     |",  # Invalid character '@'
+            "|    #       |",
+            "|            |",
+            "--------------"
+        )
+        with self.assertRaises(Warning):
+            evolve(field, 1)
+
+    def test_invalid_world_dimensions(self):
+        field = (
+            "----",
+            "|  |",
+            "----"
+        )
+        with self.assertRaises(Warning):
+            evolve(field, 1)
+
+    def test_invalid_steps_type(self):
+        field = (
+            "--------------",
+            "|            |",
+            "|   ###      |",
+            "|   #        |",
+            "|    #       |",
+            "|            |",
+            "--------------"
+        )
+        with self.assertRaises(Warning):
+            evolve(field, "one")
+
+    def test_negative_steps(self):
+        field = (
+            "--------------",
+            "|            |",
+            "|   ###      |",
+            "|   #        |",
+            "|    #       |",
+            "|            |",
+            "--------------"
+        )
+        with self.assertRaises(Warning):
+            evolve(field, -1)
+
+    def test_empty_world(self):
+        field = ()
+        with self.assertRaises(Warning):
+            evolve(field, 1)
+
+    def test_inconsistent_row_lengths(self):
+        field = (
+            "--------------",
+            "|            |",
+            "|   ###      |",
+            "|   #       |",  # One character less
+            "|    #       |",
+            "|            |",
+            "--------------"
+        )
+        with self.assertRaises(Warning):
+            evolve(field, 1)
 
     """
     * For cells next to the frame, frame cells are considered unpopulated from the cell's perspective.
