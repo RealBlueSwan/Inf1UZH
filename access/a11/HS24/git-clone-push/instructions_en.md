@@ -4,7 +4,7 @@ Git repositories are typically used to synchronize the work between different de
 
 Since we're working with a remote repository, the variable `$REPO_URL` must be used in the script in place of the actual location of the repository on the internet. ACCESS will set this variable to a specific value, because, of course, it must be a repository where ACCESS has read/write permissions. This means:
 
-* You should *not* specify an exact repository in your `script.py`.
+* You should *not* specify an exact repository in your `script.sh`.
 * Do *not* set the `REPO_URL` variable in your script.
 * Wherever you would specify the exact repository URL, you must use the character sequence `"${REPO_URL}"`.
 * To test your script locally on your machine with your own repository, you can run your script like this: `REPO_URL="http://some.server.com/yourname/yourrepo" ./script.sh`. This will set the variable `${REPO_URL}` to the given value before running the script, so that the script can use it.
